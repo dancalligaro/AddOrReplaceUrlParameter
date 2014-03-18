@@ -4,7 +4,7 @@
     var encodedParamName = encodeURIComponent(paramName);
     var encodedParamValue = encodeURIComponent(paramValue);
     if(paramSplit[1]) {
-      if(paramSplit[1].indexOf(encodedParamName) > -1){
+      if(paramSplit[1].match( new RegExp("(^|\&)" + encodedParamName + "=")  )){
         var match = new RegExp( '(' + encodedParamName + ')' + "=.*?(\\&|$)");
         paramSplit[1] = paramSplit[1].replace(match, '$1=' + encodedParamValue + '$2');
       }else{
